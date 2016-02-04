@@ -1,0 +1,35 @@
+<ion-header-bar class="bar bar-header bar-assertive">
+	<h1>Pokedex</h1>
+</ion-header-bar>
+<ion-content id="mainPost" class="padding">
+<div class="list card">
+	<div class="item item-avatar">
+    	<img data-ng-src="img/{{pokemonName.name}}.png" alt="{{pokemonName.name}}">
+    	<h2>{{pokemonName.name}}</h2>
+    	<p>ID: {{pokemonName.pkdx_id}}</p>
+  	</div>
+		
+		<ul class="list">
+			<li class="item item-divider"><p>Stats</p></li>
+			<li class="item"><p>Height: {{pokemonName.height/10 | number : 1}}m</p></li>
+			<li class="item"><p>Weight: {{pokemonName.weight/4.54 | number : 1}}kg</p></li>
+			<li class="item item-divider"><p>Type:</p></li>
+			<li class="item" ng-repeat="type in pokemonName.types">{{type.name}}</li>
+			<li class="item item-divider"><p>Abilities:</p></li>
+			<li class="item" ng-repeat="abilities in pokemonName.abilities">{{abilities.name}}</li>
+			<li class="item">HP: {{pokemonName.hp}}</li>
+		</ul>
+	<div class="item item-avatar" ng-if="pokemonName.evolutions.length !== 0" ng-repeat="evolution in pokemonName.evolutions">
+		<img data-ng-src="img/{{evolution.to}}.png" alt="{{evolution.to}}">
+    	<h3>Evolves to: {{evolution.to}}</h3>
+		<p ng-if="evolution.level > 0">Level: {{evolution.level}}</p>
+		<p ng-if="evolution.method !== 'level_up' ">Method: {{evolution.method}}</p>
+		
+  	</div>
+</div>
+
+</ion-content>
+<ion-footer-bar class="bar-assertive">
+	<button class="button icon-left ion-home" ng-click="goHome()"></button>
+	<div class="title">&#xA9; Pok&#xE9;api | 2016</div>
+</ion-footer-bar>

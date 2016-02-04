@@ -1,0 +1,23 @@
+<ion-header-bar class="bar bar-header bar-assertive">
+	<h1>Pokedex</h1>
+</ion-header-bar>
+<ion-content>
+	<ion-refresher pulling-text="Pull To Refresh" refreshing-text="loading..." on-refresh="loadPokemon()">
+	</ion-refresher>
+
+	<ion-list id="mainList">
+	<div class="card list">
+		<ion-item ng-repeat="pokemons in pokemon | limitTo:quantity " class="item item-thumbnail-left">
+		<img data-ng-src="img/{{pokemons.name}}.png" alt="{{pokemons.name}}">
+		<h2 data-ng-bind-html="pokemons.name" class="title"></h2>
+		<p class="pokemonLink"><a href="#/details/{{newID[$index]}}" >statistics</a><p>
+		</ion-item>
+	</div>
+	</ion-list>
+
+	
+</ion-content>
+<ion-footer-bar class="bar-assertive">
+	<button class="button icon-left ion-home" ng-click="goHome()"></button>
+	<div class="title">&#xA9; Pok&#xE9;api | 2016</div>
+</ion-footer-bar>
